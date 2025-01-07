@@ -77,7 +77,7 @@ router.post('/:id/reviews', auth, async (req, res) => {
 })
 
 // Delete review
-router.delete('/:productId/reviews/:reviewId', auth, isAdmin([true]), async (req, res) => {
+router.delete('/:productId/reviews/:reviewId', auth, isAdmin(true), async (req, res) => {
 	await deleteReview(req.params.productId, req.params.reviewId)
 
 	res.send({ error: null })
