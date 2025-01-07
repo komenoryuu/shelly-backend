@@ -5,7 +5,7 @@ const { getProducts, getProduct, addProduct } = require('../controllers/product'
 const { addReview, deleteReview } = require('../controllers/review')
 const auth = require('../middlewares/auth')
 const isAdmin = require('../middlewares/hasRole')
-
+const mapReviews = require('../helpers/mapReviews')
 const router = express.Router({ mergeParams: true })
 
 // Products
@@ -67,12 +67,13 @@ router.post('/create', auth, async (req, res) => {
 // New review
 router.post('/:id/reviews', auth, async (req, res) => {
 	const newReview = await addReview(req.params.id, {
+		user: req.body.user,
+		// user: req.user.id,
+		grade: req.body.grade,
 		content: req.body.content,
-		user: req.user.id,
-		grade: req.body.grage,
 	})
 
-	res.send({ data: newReview })
+	res.send({ data: mapReviews(newReview) })
 })
 
 // Delete review
