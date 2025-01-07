@@ -21,6 +21,14 @@ const UserSchema = mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		name: {
+			type: String,
+			required: false,
+		},
+		lastName: {
+			type: String,
+			required: false,
+		},
 	},
 	{ timestamps: true },
 )

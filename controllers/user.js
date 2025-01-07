@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
 const { generate } = require('../helpers/token')
-const mapUser = require('../helpers/mapUser')
 
 async function register(email, password) {
 	if (!password) {
