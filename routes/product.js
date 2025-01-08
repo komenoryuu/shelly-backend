@@ -28,7 +28,10 @@ router.get('/:id', async (req, res) => {
 
 // New product
 router.post('/create', auth, async (req, res) => {
-	const form = new IncomingForm({ uploadDir: 'uploads', keepExtensions: true })
+	const form = new IncomingForm({
+		uploadDir: 'data/uploads',
+		keepExtensions: true,
+	})
 
 	form.parse(req, async (err, fields, files) => {
 		if (err) {
