@@ -6,6 +6,7 @@ const { addReview, deleteReview } = require('../controllers/review')
 const auth = require('../middlewares/auth')
 const isAdmin = require('../middlewares/hasRole')
 const mapReviews = require('../helpers/mapReviews')
+const mapProducts = require('../helpers/mapProducts')
 const router = express.Router({ mergeParams: true })
 
 // Products
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 		req.query.page,
 	)
 
-	res.send({ data: { products, lastPage } })
+	res.send({ products: mapProducts(products), lastPage })
 })
 
 // One product

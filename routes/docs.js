@@ -6,7 +6,7 @@ const router = express.Router({ mergeParams: true })
 
 const policiesPath = path.join(__dirname, '../data/policies')
 
-// Terms of use
+// Md files
 router.get('/policies/:fileName', async (req, res) => {
 	const { fileName } = req.params
 
