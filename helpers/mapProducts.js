@@ -1,3 +1,5 @@
+const dateFormatter = require('./dateFormatter')
+
 module.exports = function (products) {
 	return products.map(product => {
 		return {
@@ -13,8 +15,8 @@ module.exports = function (products) {
 			dimensions: product.dimensions,
 			color: product.color,
 			material: product.material,
-			createdAt: product.createdAt,
-			updatedAt: product.updatedAt,
+			createdAt: dateFormatter(product.createdAt),
+			updatedAt: dateFormatter(product.updatedAt),
 		}
 	})
 }
