@@ -4,14 +4,14 @@ const path = require('path')
 
 const router = express.Router({ mergeParams: true })
 
-const policiesPath = path.join(__dirname, '../data/policies')
+const filesPath = path.join(__dirname, '../data/files')
 
 // Md files
-router.get('/policies/:fileName', async (req, res) => {
+router.get('/files/:fileName', async (req, res) => {
 	const { fileName } = req.params
 
 	try {
-		const filePath = path.join(policiesPath, fileName)
+		const filePath = path.join(filesPath, fileName)
 
 		if (!fs.existsSync(filePath)) {
 			return res.status(404).send({ error: 'Файл не найден.' })

@@ -1,18 +1,18 @@
-const { verify } = require('../helpers/token');
-const User = require('../models/User');
+const { verify } = require('../helpers/token')
+const User = require('../models/User')
 
 module.exports = async function (req, res, next) {
-	const tokenData = verify(req.cookies.token);
+	const tokenData = verify(req.cookies.token)
 
-	const user = await User.findOne({ _id: tokenData.id });
+	const user = await User.findOne({ _id: tokenData.id })
 
 	if (!user) {
-		res.send({ error: 'Пользователь не найден' });
+		res.send({ error: 'Пользователь не найден' })
 
-		return;
+		return
 	}
 
-	req.user = user;
+	req.user = user
 
-	next();
-};
+	next()
+}
