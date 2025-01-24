@@ -15,9 +15,9 @@ app.use(
 		origin: 'http://localhost:5173',
 		methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
+		credentials: true,
 	}),
 )
-
 app.use(express.static(path.resolve('..', 'build')))
 app.use('/data/uploads', express.static(path.join(__dirname, 'data', 'uploads')))
 app.use(cookieParser())
