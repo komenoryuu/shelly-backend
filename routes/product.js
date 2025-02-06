@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	const product = await getProduct(req.params.id)
 
-	res.send({ data: product })
+	res.send(mapProducts(product))
 })
 
 // New product
